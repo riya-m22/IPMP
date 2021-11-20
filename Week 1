@@ -33,6 +33,35 @@ public:
          ans ^= nums[i];
     }
     return ans;
+    
+ //Increasing triplet subsequence
+   bool increasingTriplet(vector<int>& nums) {
+      if(size(nums)<3)
+          return false;
+        int c1=INT_MAX,c2=INT_MAX;
+        for(int i :nums)
+        {if (i<=c1)
+         c1=i;
+        else if(i<=c2)
+            c2=i;
+        else 
+         return true;
+        }
+        return false;
+    }
+    //First missing positive
+    int firstMissingPositive(vector<int>& nums) {
+       int n=size(nums);
+        for(int i=0;i<n;i++)
+            while(nums[i]>0 && nums[i]<=n && nums[nums[i]-1]!=nums[i])
+            swap(nums[i],nums[nums[i]-1]);
+        
+        for(int i=0;i<n;i++)
+        {if(nums[i]!=i+1)
+         return i+1;
+        }
+       return n+1; 
+    }
     }
 };
 
