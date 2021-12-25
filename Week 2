@@ -33,6 +33,10 @@ public:
     MyQueue() {
 
     }
+    // Span stock
+    stack<int> s;
+    int p;
+    for(
     // Min stack using O(1)
     class MinStack {
 
@@ -117,3 +121,93 @@ public:
         }
         return res;
     }
+// span Stock
+FindingSpans(int A[], int n)
+{ stack<int> D;
+  int p;
+  for(int i=0;i<n;i++){
+  while(!isEmpty(D) && A[i]>A[top(D)])
+  pop(D);
+  if(isEmpty(D))
+  P=-1;
+  else P=top(D);
+  S[i]=i-P;
+  push(D,i);
+  }
+  return S;
+  }
+  //Next Greatest Element
+  #include<bits/stdc++.h>
+using namespace std;
+
+void nextGreat(int A[], int n) {
+	stack<int> s;
+	int nextGreatest, element;
+	vector<int> B;
+	int i = 0;
+	s.push(A[0]);
+	for (i = 0; i < n; i++) {
+		nextGreatest = A[i];
+		if (!s.empty()) {
+			element = s.top();
+			s.pop();
+			while (nextGreatest > element) {
+				B[i] = nextGreatest;
+				if (s.empty())
+					break;
+				element = s.top();
+				s.pop();
+			}
+			if (element > nextGreatest)
+				s.push(element);
+		}
+		s.push(nextGreatest);
+	}
+	while (!s.empty())
+	{
+		element = s.top();
+		s.pop();
+		nextGreatest = -1;
+		B[i] = nextGreatest;
+	}
+	for (int j = 0; j < n; j++)
+		cout << B[j];
+
+}
+
+
+int main()
+{
+	int A[10];
+	int n;
+	cin >> n;
+	for (int i = 0; i < n; i++)
+		cin >> A[i];
+	nextGreat(A, n);
+}
+//Largest area of histogram
+int largestRectangleArea(vector<int>& heights) {
+        stack<int> s;
+        int n=s.size(),ans=0,i=0;;
+         heights.push_back(0);
+        while(i<n) {
+            while(!(s.empty())&&heights[s.top()]>heights[i]){
+                int t=s.top();
+                int h=heights[t];
+                s.pop(); 
+                if(s.empty())
+                    ans=max(ans,h*i);
+                else
+                {
+                    int len =i-s.top()-1;
+                   ans=max(ans,h*len);
+            }
+            }
+              s.push(i);  
+            i++ ;
+            }
+        return ans;
+                
+        }
+
+};
