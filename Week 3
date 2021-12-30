@@ -12,3 +12,34 @@ public:
         return -1;
     }
 };
+//Reverse words in a string
+ void reverseword(string &s,int i,int j){
+        char temp;
+        while (i<j)
+        { temp=s[i];
+       s[i]=s[j];
+         s[j]=temp;
+          i++;
+        j--;}
+    }
+    string reverseWords(string s) {
+     int i=0;
+        int j=0;
+        int l=0;
+        int len=s.length();
+        int count=0;
+        while(true){
+            while(i<len&&s[i]==' ') i++;
+            if(i==len) break;
+            if(count) s[j++]=' ';
+            l=j;
+            while(i<len && s[i] != ' ') {s[j]=s[i]; j++; i++;} 
+            reverseword(s,l,j-1);
+            count++;
+        }
+        s.resize(j);
+           reverseword(s,0,j-1);
+        return s;
+    }
+        
+    
