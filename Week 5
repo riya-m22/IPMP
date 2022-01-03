@@ -1,0 +1,33 @@
+//Subarray equal to zero
+#include <bits/stdc++.h>
+
+using namespace std;
+
+bool Sumzero(vector<int> A, int n){
+    unordered_set<int> s;
+    int sum=0;
+    for(int i=0;i<n;i++){
+        sum+=A[i];
+        if(sum==0||s.find(sum)
+            != s.end())
+            return true;
+          s.insert(sum);
+    }
+    return false;
+} 
+
+int main()
+{
+   vector<int> A;
+   int n;
+   cin>>n;
+   for (int i=0;i<n;i++) {
+       cin>>A[i];
+   } 
+   if(Sumzero(A,n))
+    cout<<"Sub array exists";
+    else
+    cout<<"Sub array doesnt exists";
+   return 0;
+}
+//
