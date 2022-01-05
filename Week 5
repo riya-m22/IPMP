@@ -52,4 +52,33 @@ bool searchMatrix(vector<vector<int>>& matrix, int target) {
         }
         return false;
     }
-//`
+//`Print a given matrix spirally
+vector<int> spiralOrder(vector<vector<int>>& matrix) {
+       int rowst=0, columnst=0;
+        vector<int> a;
+        int rowen,colen,i,j=0;
+        while(rowst<rowen&&columnst<colen){
+            for(i=columnst;i<colen;i++)
+                a.push_back(matrix[rowst][i]);
+            rowst++;
+            
+                for(i=rowst;i<rowen;i++)
+                   a.push_back(matrix[i][colen-1]);
+            colen--;
+            if (rowst< rowen) {
+            for (i = colen- 1; i >= columnst; --i) {
+               a.push_back(matrix[rowen - 1][i]);
+            }
+            rowen--;
+        }
+             if (columnst < colen) {
+            for (i = rowen- 1; i >= rowst; --i) {
+               a.push_back(matrix[i][columnst]) ;
+            }
+            columnst++;
+        }
+        }
+       return a; 
+    }
+};
+//
