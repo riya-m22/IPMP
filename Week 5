@@ -104,4 +104,80 @@ vector<int> spiralOrder(vector<vector<int>>& matrix) {
        return glass[i*(i-1)/2 + j - 1];
      
     }
-  //
+  // Segregate even and odd numbers
+  class Solution {
+public:
+    vector<int> sortArrayByParity(vector<int>& nums) {
+       int n=nums.size();
+        vector<int> sorted;
+        for(int i=0;i<n;i++){
+            if(nums[i]%2==0)
+                 sorted.insert(sorted.begin(),nums[i]);
+              
+            else 
+                 sorted.push_back(nums[i]);  
+           
+            
+        }
+        return sorted;
+    }
+ //Sort An array by increasing frequency
+ class Solution {
+public:
+    vector<int> frequencySort(vector<int>& A) {
+        unordered_map<int, int> count;
+        for (int a: A)
+            count[a]++;
+        sort(begin(A), end(A), [&](int a, int b) {
+            return count[a] == count[b] ? a > b : count[a] < count[b];
+        });
+        return A;
+    }
+};
+//Sort an array of 0s,1s,2s
+class Solution {
+    public:
+    void sortColors(vector<int>& nums) 
+    {
+        int tmp = 0, low = 0, mid = 0, high = nums.size() - 1;
+    
+        while(mid <= high)
+        {
+            if(nums[mid] == 0)
+            {
+                tmp = nums[low];
+                nums[low] = nums[mid];
+                nums[mid] = tmp;
+                low++;
+                mid++;
+            }
+            else if(nums[mid] == 1)
+            {
+                mid++;
+            }
+            else if(nums[mid] == 2)
+            {
+                tmp = nums[high];
+                nums[high] = nums[mid];
+                nums[mid] = tmp;
+                high--;
+            }
+        }
+    }
+};
+};
+//Move all zeroes to end of the array
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        int count=0;
+        int n=nums.size();
+        for(int i=0;i<n;i++)
+            if(nums[i]!=0)
+                nums[count++]=nums[i];
+        while(count<n)
+            nums[count++]=0;
+        for(int i=0;i<n;i++)
+        cout<<nums[i];
+        }
+};
