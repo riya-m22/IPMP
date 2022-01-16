@@ -1,0 +1,45 @@
+//Nth node from end of linked list
+int getNthFromLast(struct Node *head, int n)
+{ int len=0,i;
+  struct Node *temp=head;
+  while(temp!=NULL){
+      temp=temp->next;
+      len++;
+  }
+  if(n>len)
+  return -1;
+  temp=head;
+  for(i=1;i<len-n+1;i++){
+      temp=temp->next;
+  }
+  return temp->data;
+    
+}
+//Reverse a linked list
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+       ListNode* prev=NULL;
+       ListNode* cur=head;
+       ListNode* n;
+        while(cur!=NULL){
+           n=cur->next;
+            cur->next=prev;
+            prev=cur;
+            cur=n;
+        }
+        return prev;
+    
+    }
+};
+//Delete the linked list
+void DeleteAll(Node** head){
+Node* cur=head;
+Node* next=NULL;
+while(cur!=NULL){
+next=cur->next;
+free(cur);
+cur=next;
+}
+head=NULL;
+}
