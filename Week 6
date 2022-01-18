@@ -76,3 +76,14 @@ public:
         
     return p1;}
 };
+//Delete Alternate nodes of a linked list
+void deleteAlt(struct Node *head){
+   if (head == NULL)
+        return;
+   Node *n=head->next;
+   if(n==NULL)
+   return;
+   head->next=n->next;
+   free(n);
+   deleteAlt(head->next);
+//
