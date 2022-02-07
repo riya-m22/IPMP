@@ -209,3 +209,16 @@ public:
         }
     return count;}
 };
+//Rotate bits
+ public:
+        vector <int> rotate (int n, int d)
+        {
+          vector<int> a;
+          unsigned int l,r;
+          l=n<<d|n>>(16-d);
+          a.push_back(l);
+          r=n>>d|n<<(16-d);
+           a.push_back(r);
+           return a;//code here.
+        }
+};
